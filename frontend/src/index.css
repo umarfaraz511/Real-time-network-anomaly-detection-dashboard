@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  background: #050810;
+  color: #e2e8f0;
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: #0a0f1e; }
+::-webkit-scrollbar-thumb { background: #1a2540; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #00d4ff; }
+
+.cyber-panel {
+  background: #0a0f1e;
+  border: 1px solid #1a2540;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  opacity: 0.6;
+}
+
+.anomaly-flash {
+  animation: anomalyFlash 0.6s ease-out;
+}
+
+@keyframes anomalyFlash {
+  0%   { background-color: rgba(255, 59, 92, 0.25); }
+  100% { background-color: transparent; }
+}
+
+.glow-accent { text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff40; }
+.glow-red     { text-shadow: 0 0 10px #ff3b5c, 0 0 20px #ff3b5c40; }
+
+.live-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #00ff88;
+  box-shadow: 0 0 6px #00ff88;
+  animation: livePulse 1.5s ease-in-out infinite;
+}
+
+.dead-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4a5568;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #1a2540 !important;
+}
